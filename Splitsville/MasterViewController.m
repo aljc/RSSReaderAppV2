@@ -8,10 +8,13 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "MyDataFetchClass.h"
+#import "ArticleTableViewCell.h"
 
 @interface MasterViewController ()
 
 @property NSMutableArray *objects;
+@property NSMutableArray *articles;
 @end
 
 @implementation MasterViewController
@@ -22,6 +25,32 @@
     self.preferredContentSize = CGSizeMake(320.0, 600.0);
 }
 
+- (void)loadInitialData
+{
+    
+    [[MyDataFetchClass sharedSharedNetworking] getFeedWithURL:@"http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss" success:^(NSMutableArray *array, NSError *error) {
+    
+        _articles = array;
+        //NSLog(@"%@" , [[[array objectForKey:@"responseData"] objectForKey:@"feed"] objectForKey:@"entries"][0]);
+        [self.tableView reloadData];
+        
+        [self.refreshControl endRefreshing];
+    } failure:^{
+        NSLog(@"Erorr: data not downloaded correctly");
+        
+        [self.refreshControl endRefreshing];
+    }];
+
+}
+
+- (void)refreshTable {
+    NSLog(@"Pull To Refresh");
+    
+    //Reload the data - repopulate the issuesData array! ***
+    [self loadInitialData];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -30,6 +59,16 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.articles = [[NSMutableArray alloc] init]; //initialize the array
+    [self loadInitialData]; //now, populate the array!
+    
+    //refresh control
+    UIRefreshControl *pullToRefresh = [[UIRefreshControl alloc] init];
+    [pullToRefresh addTarget:self action:@selector(refreshTable)
+            forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = pullToRefresh;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,9 +90,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
+        NSDictionary *link = [self.articles objectAtIndex:indexPath.row];
+        
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-        [controller setDetailItem:object];
+        [controller setLinkItem:link];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
@@ -66,14 +106,22 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    return self.articles.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    ArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"articleCell" forIndexPath:indexPath];
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    NSDictionary* currentArrayElement = [self.articles objectAtIndex:indexPath.row];
+    
+    NSLog(@"array: %@", currentArrayElement);
+    
+    cell.title.text = [currentArrayElement objectForKey:@"title"];
+    cell.date.text = [currentArrayElement objectForKey:@"publishedDate"];
+    cell.preview.text = [currentArrayElement objectForKey:@"contentSnippet"];
+
+//    NSDate *object = self.objects[indexPath.row];
+//    cell.textLabel.text = [object description];
     return cell;
 }
 
