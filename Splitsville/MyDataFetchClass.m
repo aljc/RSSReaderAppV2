@@ -13,7 +13,7 @@
 // -----------------------------------------------------------------------------
 #pragma mark - Initialization
 // -----------------------------------------------------------------------------
-+ (id)sharedSharedNetworking
++ (id)sharedNetworking
 {
     static dispatch_once_t pred;
     static MyDataFetchClass *shared = nil;
@@ -44,17 +44,17 @@
                                                      NSError *error) {
                                      
                                      // handle response
-                                     NSLog(@"Data:%@",data);
-                                     NSLog(@"Response:%@",response);
-                                     NSLog(@"Error:%@",[error localizedDescription]);
-                                     
-                                     
+//                                     NSLog(@"Data:%@",data);
+//                                     NSLog(@"Response:%@",response);
+//                                     NSLog(@"Error:%@",[error localizedDescription]);
+                                    
                                      NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
+                                     
                                      if (httpResp.statusCode == 200) {
                                          NSError *jsonError;
                                          
                                          NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-                                         NSLog(@"DownloadeData:%@ \n---",dict);
+                                         //NSLog(@"DownloadedData:%@ \n---",dict);
                                          successCompletion([[[dict objectForKey:@"responseData"] objectForKey:@"feed"] objectForKey:@"entries"],nil);
                                      } else {
                                          NSLog(@"Fail Not 200:");

@@ -10,7 +10,7 @@
 
 @interface MyDataFetchClass : NSObject
 
-+ (id)sharedSharedNetworking;
++ (id)sharedNetworking;
 - (void)getFeedWithURL:(NSString*)url
                success:(void (^)(NSMutableArray *array, NSError *error))successCompletion
                failure:(void (^)(void))failureCompletion;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DEF9D1CF-9DF8-48A5-B786-BDA8BC084337</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Splitsville</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C3C0ED5327EADE7980B7F27C83F429BEBC19600C</key>
+		<string>https://github.com/uchicago-mobi/aljc-MPCS51030-Winter-2015-Assignment-6.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Splitsville.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C3C0ED5327EADE7980B7F27C83F429BEBC19600C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/uchicago-mobi/aljc-MPCS51030-Winter-2015-Assignment-6.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C3C0ED5327EADE7980B7F27C83F429BEBC19600C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C3C0ED5327EADE7980B7F27C83F429BEBC19600C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>aljc-MPCS51030-Winter-2015-Assignment-6</string>
+		</dict>
+	</array>
+</dict>
+</plist>

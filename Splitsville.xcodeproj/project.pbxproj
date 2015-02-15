@@ -17,6 +17,7 @@
 		31DF26281A8EBECF009C1ADE /* SplitsvilleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF26271A8EBECF009C1ADE /* SplitsvilleTests.m */; };
 		31DF26331A8EBF1D009C1ADE /* ArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF26321A8EBF1D009C1ADE /* ArticleTableViewCell.m */; };
 		31DF26361A8EBFD2009C1ADE /* MyDataFetchClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF26351A8EBFD2009C1ADE /* MyDataFetchClass.m */; };
+		31FE2BB11A911E8C00015A99 /* BookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31FE2BB01A911E8C00015A99 /* BookmarkViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		31DF26321A8EBF1D009C1ADE /* ArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTableViewCell.m; sourceTree = "<group>"; };
 		31DF26341A8EBFD2009C1ADE /* MyDataFetchClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataFetchClass.h; sourceTree = "<group>"; };
 		31DF26351A8EBFD2009C1ADE /* MyDataFetchClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataFetchClass.m; sourceTree = "<group>"; };
+		31FE2BAF1A911E8C00015A99 /* BookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkViewController.h; sourceTree = "<group>"; };
+		31FE2BB01A911E8C00015A99 /* BookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 				31DF26121A8EBECF009C1ADE /* DetailViewController.h */,
 				31DF26131A8EBECF009C1ADE /* DetailViewController.m */,
 				31DF26151A8EBECF009C1ADE /* Main.storyboard */,
+				31FE2BAF1A911E8C00015A99 /* BookmarkViewController.h */,
+				31FE2BB01A911E8C00015A99 /* BookmarkViewController.m */,
 				31DF26341A8EBFD2009C1ADE /* MyDataFetchClass.h */,
 				31DF26351A8EBFD2009C1ADE /* MyDataFetchClass.m */,
 				31DF26311A8EBF1D009C1ADE /* ArticleTableViewCell.h */,
@@ -240,6 +245,7 @@
 				31DF26361A8EBFD2009C1ADE /* MyDataFetchClass.m in Sources */,
 				31DF26331A8EBF1D009C1ADE /* ArticleTableViewCell.m in Sources */,
 				31DF26141A8EBECF009C1ADE /* DetailViewController.m in Sources */,
+				31FE2BB11A911E8C00015A99 /* BookmarkViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +438,7 @@
 				31DF262D1A8EBECF009C1ADE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31DF262E1A8EBECF009C1ADE /* Build configuration list for PBXNativeTarget "SplitsvilleTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +447,7 @@
 				31DF26301A8EBECF009C1ADE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

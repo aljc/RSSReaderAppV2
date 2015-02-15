@@ -11,8 +11,9 @@
 @interface DetailViewController : UIViewController
 
 @property (strong, nonatomic) NSDictionary *linkItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+- (void)setDetailItem:(NSDictionary *)newLinkItem;
 
 @end
 

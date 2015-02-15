@@ -16,19 +16,23 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setLinkItem:(NSDictionary *)newLinkItem {
-    if (_linkItem != newLinkItem) {
-        _linkItem = newLinkItem;
+//can't just use the setter because we also want to update the view
+//(call configureView) after we set it
+- (void)setDetailItem:(NSDictionary *)newLinkItem { //**must be named setDetailItem to override existing function
+    if (self.linkItem != newLinkItem) { //if view isn't already onscreen
+        self.linkItem = newLinkItem;
         [self configureView];
         NSLog(@"setter override");
     }
 }
 
+//custom method to update the onscreen view
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.linkItem) {
-        self.detailDescriptionLabel.text = self.linkItem[@"title"];
+        NSLog(@"@configure view");
         NSURL *url = [NSURL URLWithString:self.linkItem[@"link"]];
+        NSLog(@"url to load: %@", self.linkItem[@"link"]);
         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
     }
 }
