@@ -32,19 +32,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TrM-Qw-kjH">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMG-pS-3nv">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ZWq-eZ-Ri2"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Favorite This Article" style="plain" id="OKS-au-JWB"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="NMu-OU-91n"/>
+                                    <barButtonItem title="Favorite This Article" width="193" style="plain" id="OKS-au-JWB"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eKP-eS-UNq"/>
                                 </items>
                             </toolbar>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TrM-Qw-kjH">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
