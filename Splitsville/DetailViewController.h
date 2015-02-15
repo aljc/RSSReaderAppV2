@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSDictionary *linkItem;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
+- (IBAction)addToBookmarks:(UIBarButtonItem *)sender;
 - (void)setDetailItem:(NSDictionary *)newLinkItem;
 
 @end

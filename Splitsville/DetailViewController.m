@@ -16,7 +16,12 @@
 
 #pragma mark - Managing the detail item
 
-//can't just use the setter because we also want to update the view
+
+- (IBAction)addToBookmarks:(UIBarButtonItem *)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  }
+
+//can't just use the default setter because we also want to update the view
 //(call configureView) after we set it
 - (void)setDetailItem:(NSDictionary *)newLinkItem { //**must be named setDetailItem to override existing function
     if (self.linkItem != newLinkItem) { //if view isn't already onscreen

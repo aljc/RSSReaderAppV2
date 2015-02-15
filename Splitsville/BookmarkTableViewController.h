@@ -1,5 +1,5 @@
 //
-//  BookmarkViewController.h
+//  BookmarkTableViewController.h
 //  Splitsville
 //
 //  Created by ajchang on 2/15/15.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BookmarkViewController : UIViewController
+@interface BookmarkTableViewController : UITableViewController
+
+@property NSMutableArray *bookmarks;
 
 @end

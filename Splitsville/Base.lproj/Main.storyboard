@@ -32,10 +32,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TrM-Qw-kjH">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMG-pS-3nv">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <constraints>
@@ -43,10 +39,18 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="NMu-OU-91n"/>
-                                    <barButtonItem title="Favorite This Article" width="193" style="plain" id="OKS-au-JWB"/>
+                                    <barButtonItem title="Favorite This Article" width="193" style="plain" id="OKS-au-JWB">
+                                        <connections>
+                                            <action selector="addToBookmarks:" destination="JEX-9P-axG" id="3pc-6F-7sI"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="eKP-eS-UNq"/>
                                 </items>
                             </toolbar>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TrM-Qw-kjH">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -63,7 +67,7 @@
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="niK-b4-96w">
                             <connections>
-                                <segue destination="g3r-U1-xFt" kind="popoverPresentation" popoverAnchorBarButtonItem="niK-b4-96w" id="qYu-vp-bzb">
+                                <segue destination="fKr-uo-VHg" kind="popoverPresentation" popoverAnchorBarButtonItem="niK-b4-96w" id="i0z-xC-erd">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -78,23 +82,43 @@
             </objects>
             <point key="canvasLocation" x="694" y="120"/>
         </scene>
-        <!--Bookmark View Controller-->
-        <scene sceneID="Hm3-cC-3Qn">
+        <!--Bookmark Table View Controller-->
+        <scene sceneID="mBx-1h-OdH">
             <objects>
-                <viewController id="g3r-U1-xFt" customClass="BookmarkViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Lpi-Be-xPX"/>
-                        <viewControllerLayoutGuide type="bottom" id="Jkn-f6-ztB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QkD-sV-ymE">
+                <tableViewController id="fKr-uo-VHg" customClass="BookmarkTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sfL-uA-DfY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sIb-3g-Idn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookmarkCell" id="Oun-qE-Nvl" customClass="BookmarkTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oun-qE-Nvl" id="7AC-BZ-mCu">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7n-xd-kZf">
+                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="accessoryView" destination="sfL-uA-DfY" id="VWq-WF-xfe"/>
+                                    <outlet property="title" destination="w7n-xd-kZf" id="BBe-qz-RJI"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fKr-uo-VHg" id="NRh-zI-YLw"/>
+                            <outlet property="delegate" destination="fKr-uo-VHg" id="MW1-G4-8h6"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D4y-8n-TVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1375" y="120"/>
+            <point key="canvasLocation" x="1350" y="112"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
