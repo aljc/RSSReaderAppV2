@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import <Social/Social.h>
 
 @interface DetailViewController ()
 @property NSArray* bookmarksCopyFromDefaults;
@@ -83,6 +84,21 @@
         [self configureView];
         NSLog(@"setter override");
     }
+}
+
+//Displays a twitter sheet to allow user to tweet about article
+//Source: http://pinkstone.co.uk/how-to-post-to-facebook-and-twitter-using-social-framework/
+- (IBAction)configureSocial:(UIBarButtonItem *)sender {
+    if (self.linkItem == nil) {
+        NSLog(@"You haven't selected an article yet");
+        return;
+    }
+    
+    SLComposeViewController *socialController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    
+    // present controller
+    [self presentViewController:socialController animated:YES completion:nil];
+
 }
 
 //custom method to update the onscreen view

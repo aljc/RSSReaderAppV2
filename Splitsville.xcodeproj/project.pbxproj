@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		31275A9C1A91322A0098C13C /* BookmarkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31275A9B1A91322A0098C13C /* BookmarkTableViewCell.m */; };
 		31A9895B1A91C932004BEE4D /* BookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A9895A1A91C932004BEE4D /* BookmarkTableViewController.m */; };
+		31C42B8D1A9273F400F1616D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C42B8C1A9273F400F1616D /* UIKit.framework */; };
+		31C42B8F1A9273FA00F1616D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C42B8E1A9273FA00F1616D /* Social.framework */; };
 		31DF260B1A8EBECF009C1ADE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF260A1A8EBECF009C1ADE /* main.m */; };
 		31DF260E1A8EBECF009C1ADE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF260D1A8EBECF009C1ADE /* AppDelegate.m */; };
 		31DF26111A8EBECF009C1ADE /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF26101A8EBECF009C1ADE /* MasterViewController.m */; };
@@ -36,6 +38,8 @@
 		31275A9B1A91322A0098C13C /* BookmarkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkTableViewCell.m; sourceTree = "<group>"; };
 		31A989591A91C932004BEE4D /* BookmarkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkTableViewController.h; sourceTree = "<group>"; };
 		31A9895A1A91C932004BEE4D /* BookmarkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkTableViewController.m; sourceTree = "<group>"; };
+		31C42B8C1A9273F400F1616D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		31C42B8E1A9273FA00F1616D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		31DF26051A8EBECF009C1ADE /* Splitsville.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splitsville.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DF26091A8EBECF009C1ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31DF260A1A8EBECF009C1ADE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31C42B8F1A9273FA00F1616D /* Social.framework in Frameworks */,
+				31C42B8D1A9273F400F1616D /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,8 @@
 		31DF25FC1A8EBECF009C1ADE = {
 			isa = PBXGroup;
 			children = (
+				31C42B8E1A9273FA00F1616D /* Social.framework */,
+				31C42B8C1A9273F400F1616D /* UIKit.framework */,
 				31DF26071A8EBECF009C1ADE /* Splitsville */,
 				31DF26241A8EBECF009C1ADE /* SplitsvilleTests */,
 				31DF26061A8EBECF009C1ADE /* Products */,

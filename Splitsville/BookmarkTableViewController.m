@@ -1,5 +1,5 @@
 //
-//  testtTableViewController.m
+//  BookmarkTableViewController.m
 //  Splitsville
 //
 //  Created by ajchang on 2/16/15.
@@ -30,9 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSLog(@"self: %@", self);
-//    self.delegate =
 
     [self loadInitialData];
     [self.tableView reloadData];

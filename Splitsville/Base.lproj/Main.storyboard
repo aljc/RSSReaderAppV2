@@ -38,13 +38,17 @@
                                     <constraint firstAttribute="height" constant="44" id="ZWq-eZ-Ri2"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="NMu-OU-91n"/>
+                                    <barButtonItem title="Tweet" id="e8q-1J-hbi">
+                                        <connections>
+                                            <action selector="configureSocial:" destination="JEX-9P-axG" id="3y2-cu-HBY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eKP-eS-UNq"/>
                                     <barButtonItem title="Favorite This Article" width="193" style="plain" id="OKS-au-JWB">
                                         <connections>
                                             <action selector="addToBookmarks:" destination="JEX-9P-axG" id="3pc-6F-7sI"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eKP-eS-UNq"/>
                                 </items>
                             </toolbar>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TrM-Qw-kjH">

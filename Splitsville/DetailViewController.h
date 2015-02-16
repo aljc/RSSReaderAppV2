@@ -17,6 +17,7 @@
 
 - (IBAction)addToBookmarks:(UIBarButtonItem *)sender;
 - (void)setDetailItem:(NSDictionary *)newLinkItem;
+- (IBAction)configureSocial:(UIBarButtonItem *)sender;
 
 @end
 

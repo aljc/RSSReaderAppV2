@@ -1,5 +1,5 @@
 //
-//  testtTableViewController.h
+//  BookmarkTableViewController.h
 //  Splitsville
 //
 //  Created by ajchang on 2/16/15.
