@@ -47,8 +47,8 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="eKP-eS-UNq"/>
                                 </items>
                             </toolbar>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TrM-Qw-kjH">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TrM-Qw-kjH">
+                                <rect key="frame" x="0.0" y="64" width="600" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="694" y="120"/>
         </scene>
-        <!--Testt Table View Controller-->
+        <!--Bookmark Table View Controller-->
         <scene sceneID="OYE-JT-0un">
             <objects>
-                <tableViewController id="we9-Ec-ta3" customClass="testtTableViewController" sceneMemberID="viewController">
+                <tableViewController id="we9-Ec-ta3" customClass="BookmarkTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jzp-d7-EM2">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

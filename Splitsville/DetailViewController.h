@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "testtTableViewController.h"
+#import "BookmarkTableViewController.h"
 
 @interface DetailViewController : UIViewController <BookmarkToWebViewDelegate>
 

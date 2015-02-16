@@ -31,13 +31,13 @@
     
         self.links = array;
         
-        for (NSDictionary *link in self.links) {
+//        for (NSDictionary *link in self.links) {
 //            NSLog(@"DownloadedData:%@\n%@\n%@\n%@",
 //                  link[@"link"],
 //                  link[@"contentSnippet"],
 //                  link[@"publishedDate"],
 //                  link[@"title"]);
-        }
+//        }
         
         //update the table on the main thread
         dispatch_async(dispatch_get_main_queue(), ^{

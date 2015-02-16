@@ -35,7 +35,7 @@
 
 #pragma - Requests
 
-//Tests whether there is an available network to connect to
+//Tests whether there is an available network.  If no, then display a UIAlertView.
 //Source: http://ios-blog.co.uk/tutorials/check-if-active-internet-connection-exists-on-ios-device/
 - (BOOL) isNetworkAvailable {
     NSURL *sampleURL = [NSURL URLWithString:@"http://google.com"]; //sample url to load to test network availability

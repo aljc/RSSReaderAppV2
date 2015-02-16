@@ -116,7 +116,7 @@
     //Note: must give this segue an identifier in storyboard! **
     if ([[segue identifier] isEqualToString:@"popoverSegue"]) {
         NSLog(@"Prepare for bookmark segue");
-        testtTableViewController* bvc = (testtTableViewController*)segue.destinationViewController;
+        BookmarkTableViewController* bvc = (BookmarkTableViewController*)segue.destinationViewController;
 
         //NOTE: THIS MEANS THAT THE BOOKMARK VIEW CONTROLLER, WHICH IS ABOUT TO BE SHOWN,
         //WILL BE ASSIGNED A DELEGATE VALUE OF *SELF*, WHICH IS STILL CURRENTLY *THIS* DETAILVIEWCONTROLLER!
