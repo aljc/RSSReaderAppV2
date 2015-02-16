@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface BookmarkTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *tit;
+
+@property (weak, nonatomic) IBOutlet UILabel *bookmarkTitle;
+@property (weak, nonatomic) IBOutlet UILabel *bookmarkDate;
+@property (weak, nonatomic) IBOutlet UILabel *bookmarkPreview;
 
 @end

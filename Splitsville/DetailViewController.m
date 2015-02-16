@@ -26,7 +26,28 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+//returns true if the article is already in the bookmarks stored in NSUserDefaults, otherwise false
+- (BOOL) isBookmarked:(NSDictionary*) linkItem {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray* bookmarks = [defaults arrayForKey:@"bookmarks"];
+    
+    if (bookmarks == nil)
+        return false;
+    
+    for (NSDictionary* d in bookmarks) {
+        if ([[d objectForKey:@"title"] isEqualToString:[linkItem objectForKey:@"title"]]) {
+            NSLog(@"isbookmarked: already bookmarked");
+            return true;
+        }
+    }
+    
+    NSLog(@"isbookmarked: new bookmark");
+    
+    return false;
+}
+
 - (IBAction)addToBookmarks:(UIBarButtonItem *)sender {
+    //[self resetNSUserDefaults];
     
     if (self.linkItem == nil) {
         NSLog(@"You haven't selected an article yet");
@@ -40,12 +61,14 @@
     if (_bookmarksCopyFromDefaults != nil)
         [self.bookmarks addObjectsFromArray:_bookmarksCopyFromDefaults];
     
-    //append latest article to bookmarks array
-    [self.bookmarks addObject:self.linkItem];
+    //append latest article to bookmarks array if not already bookmarked
+    if ([self isBookmarked:self.linkItem] == false){
+        [self.bookmarks addObject:self.linkItem];
     
-    //replace bookmarks user defaults field with new consolidated array
-    [defaults setObject:self.bookmarks forKey:@"bookmarks"];
-    [defaults synchronize];
+        //replace bookmarks user defaults field with new consolidated array
+        [defaults setObject:self.bookmarks forKey:@"bookmarks"];
+        [defaults synchronize];
+    }
     
     NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
     

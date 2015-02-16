@@ -62,7 +62,7 @@
     NSLog(@"bookmark array element: %@", currentArrayElement);
     NSLog(@"got here 2");
     // Configure the cell...
-    cell.title.text = [currentArrayElement objectForKey:@"title"];
+    cell.bookmarkTitle.text = [currentArrayElement objectForKey:@"title"];
     NSLog(@"title: %@", [currentArrayElement objectForKey:@"title"]);
     NSLog(@"got here 3");
     

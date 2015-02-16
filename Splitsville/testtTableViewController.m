@@ -31,14 +31,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self loadInitialData];
     [self.tableView reloadData];
-    NSLog(@"reloaded table view");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,13 +45,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return self.links.count;
 }
@@ -63,10 +57,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"testt");
-    BookmarkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"test" forIndexPath:indexPath];
+    BookmarkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"bookmarkCell" forIndexPath:indexPath];
     
-    // Configure the cell...
-    cell.tit.text = @"hi";
+    NSDictionary* currentArrayElement = [self.links objectAtIndex:indexPath.row];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEE, dd MMM yyyy hh:mm:ss ZZZZZ"]; //matches exactly the current date format
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle]; //** specify the date format you want to display
+    NSDate *dateFromString = [[NSDate alloc] init];
+    dateFromString = [dateFormatter dateFromString:[currentArrayElement objectForKey:@"publishedDate"]];
+    
+    cell.bookmarkTitle.text = [currentArrayElement objectForKey:@"title"];
+    cell.bookmarkDate.text = [dateFormatter stringFromDate:[NSDate date]];
+    cell.bookmarkPreview.text = [currentArrayElement objectForKey:@"contentSnippet"];
     
     return cell;
 }
