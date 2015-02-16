@@ -91,6 +91,7 @@
     return YES;
 }
 
+//remove the linkItem from the list of bookmarks in NSUserDefaults
 - (void)removeFromBookmarks:(NSDictionary*) linkItem {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *bkmks;
@@ -104,23 +105,6 @@
     }
     
     int index;
-    
-    // 1 2 3 4 5
-    // 1 2 4 5
-//    
-//    for (int i = 0; i < arr.len; i++) {
-//        if (num == arr[i])
-//            break;
-//    }
-//    
-//    arr2[arr.length-1]
-//    
-//    for (int j = 0; j < arr.len-1; j++) {
-//        if (j < i)
-//            arr2[j] = arr[j];
-//        else
-//            arr2[j] = arr[j+1];
-//    }
     
     NSInteger len = bkmks.count;
     NSLog (@"prev count: %ld", len);
@@ -148,7 +132,7 @@
     [defaults setObject:newBookmarkLinks forKey:@"bookmarks"];
     [defaults synchronize];
     
-    self.bookmarkLinks = newBookmarkLinks;
+    [self loadInitialData];
     
     NSLog(@"new count: %lu", self.bookmarkLinks.count);
     //[self.tableView reloadData];
