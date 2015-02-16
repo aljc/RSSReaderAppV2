@@ -31,8 +31,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"self: %@", self);
+//    self.delegate =
 
-    
     [self loadInitialData];
     [self.tableView reloadData];
 }
@@ -72,6 +73,18 @@
     cell.bookmarkPreview.text = [currentArrayElement objectForKey:@"contentSnippet"];
     
     return cell;
+}
+
+
+//Note: must override this function in order to specify a custom action when a cell is tapped!
+//Sending the URL of the tapped bookmark cell to the detailviewcontroller so that the DVC
+//can load the webview for you.
+- (void)tableView: (UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+     NSDictionary* currentArrayElement = [self.links objectAtIndex:indexPath.row];
+    
+    [self.delegate bookmark:self sendsURL:[NSURL URLWithString:[currentArrayElement objectForKey:@"link"]]];
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 

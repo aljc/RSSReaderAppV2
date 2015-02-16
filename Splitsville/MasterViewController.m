@@ -100,7 +100,7 @@
         NSLog(@"Prepare for segue");
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDictionary *link = [self.links objectAtIndex:indexPath.row];
-//        NSLog(@"link: %@", link);
+        NSLog(@"link: %@", link);
         
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:link];

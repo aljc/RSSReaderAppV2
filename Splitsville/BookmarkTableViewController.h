@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface BookmarkTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray* bookmarksFromDefaults;
-@property (weak, nonatomic) IBOutlet UILabel *tit;
 
 @end

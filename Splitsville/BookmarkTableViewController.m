@@ -59,12 +59,8 @@
     
     NSLog(@"got here 1");
     NSDictionary* currentArrayElement = [self.bookmarksFromDefaults objectAtIndex:indexPath.row];
-    NSLog(@"bookmark array element: %@", currentArrayElement);
-    NSLog(@"got here 2");
-    // Configure the cell...
     cell.bookmarkTitle.text = [currentArrayElement objectForKey:@"title"];
-    NSLog(@"title: %@", [currentArrayElement objectForKey:@"title"]);
-    NSLog(@"got here 3");
+
     
    
       return cell;

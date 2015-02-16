@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "testtTableViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <BookmarkToWebViewDelegate>
 
 @property (strong, nonatomic) NSDictionary *linkItem;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;

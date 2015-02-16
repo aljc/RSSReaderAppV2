@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+
+/* Custom protocol */
+@protocol BookmarkToWebViewDelegate <NSObject>
+
+- (void)bookmark:(id)sender sendsURL:(NSURL*)url;
+
+@end
+
 @interface testtTableViewController : UITableViewController
+
+/* Delegate property */
+@property (weak, nonatomic) id<BookmarkToWebViewDelegate> delegate;
 
 @end

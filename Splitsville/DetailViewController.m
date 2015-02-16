@@ -109,4 +109,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"@DETAIL PREPARE FOR SEGUE %@", [segue identifier]);
+    //Note: must give this segue an identifier in storyboard! **
+    if ([[segue identifier] isEqualToString:@"popoverSegue"]) {
+        NSLog(@"Prepare for bookmark segue");
+        testtTableViewController* bvc = (testtTableViewController*)segue.destinationViewController;
+
+        //NOTE: THIS MEANS THAT THE BOOKMARK VIEW CONTROLLER, WHICH IS ABOUT TO BE SHOWN,
+        //WILL BE ASSIGNED A DELEGATE VALUE OF *SELF*, WHICH IS STILL CURRENTLY *THIS* DETAILVIEWCONTROLLER!
+        bvc.delegate = self;
+    }
+}
+
+#pragma mark - BookmarkDelegateProtocol Methods
+//will be called from the BookmarkViewController, which has set this DetailViewController as its delegate.
+//Grab the URL of the *tapped bookmark cell* from the BVC and load the webview.
+- (void)bookmark:(id)sender sendsURL:(NSURL*)url {
+    
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
 @end
