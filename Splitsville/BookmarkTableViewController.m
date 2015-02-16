@@ -83,55 +83,88 @@
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
-//
-//// Override to support conditional editing of the table view
-//// This allows users to swipe to delete cells.
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-//    // Return NO if you do not want the specified item to be editable.
-//    return YES;
-//}
-//
-//- (void)removeFromBookmarks:(NSDictionary*) linkItem {
-//    if (self.bookmarkLinks == nil)
-//        return;
+
+// Override to support conditional editing of the table view
+// This allows users to swipe to delete cells.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
+- (void)removeFromBookmarks:(NSDictionary*) linkItem {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *bkmks;
+    
+    //no bookmarks to remove
+    if ([defaults arrayForKey:@"bookmarks"]==nil) {
+        return;
+    }
+    else {
+        bkmks = [defaults arrayForKey:@"bookmarks"];
+    }
+    
+    int index;
+    
+    // 1 2 3 4 5
+    // 1 2 4 5
 //    
-//    int i;
-//    
-//    for (i=0; i < self.bookmarkLinks.count; i++) {
-//        NSDictionary* d = [self.bookmarkLinks objectAtIndex:i];
-//        if ([[d objectForKey:@"title"] isEqualToString:[linkItem objectForKey:@"title"]])
+//    for (int i = 0; i < arr.len; i++) {
+//        if (num == arr[i])
 //            break;
 //    }
 //    
-//    //article not bookmarked
-//    if (i == self.bookmarkLinks.count)
-//        return;
+//    arr2[arr.length-1]
 //    
-//    NSMutableArray* newBookmarkLinks = [[NSMutableArray alloc]initWithCapacity:self.bookmarkLinks.count-1];
-//    
-//    for (int j=0; j < newBookmarkLinks.count; j++) {
+//    for (int j = 0; j < arr.len-1; j++) {
 //        if (j < i)
-//            [newBookmarkLinks addObject:[self.bookmarkLinks objectAtIndex:j]];
+//            arr2[j] = arr[j];
 //        else
-//            [newBookmarkLinks addObject:[self.bookmarkLinks objectAtIndex:j+1]];
+//            arr2[j] = arr[j+1];
 //    }
-//    
-//    self.bookmarkLinks = newBookmarkLinks;
-//    NSLog(@"new count: %lu", self.bookmarkLinks.count);
-//    //[self.tableView reloadData];
-//}
-//
-//// Override to support editing the table view.
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        NSDictionary* remove = [self.bookmarkLinks objectAtIndex:indexPath.row];
-//        [self removeFromBookmarks:remove];
-//        // Delete the row from the data source
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    } /* else if (editingStyle == UITableViewCellEditingStyleInsert) {
-//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//    }  */
-//}
+    
+    NSInteger len = bkmks.count;
+    NSLog (@"prev count: %ld", len);
+    
+    for (index=0; index < len; index++) {
+        NSDictionary* d = [bkmks objectAtIndex:index];
+        if ([[d objectForKey:@"title"] isEqualToString:[linkItem objectForKey:@"title"]])
+            break;
+    }
+    
+    //article not bookmarked
+    if (index == len)
+        return;
+    
+    NSMutableArray* newBookmarkLinks = [[NSMutableArray alloc]initWithCapacity:len-1];
+    
+    for (int j=0; j < len-1; j++) {
+        if (j < index)
+            [newBookmarkLinks addObject:[bkmks objectAtIndex:j]];
+        else
+            [newBookmarkLinks addObject:[bkmks objectAtIndex:j+1]];
+    }
+    
+    //replace bookmarks user defaults field with new consolidated array
+    [defaults setObject:newBookmarkLinks forKey:@"bookmarks"];
+    [defaults synchronize];
+    
+    self.bookmarkLinks = newBookmarkLinks;
+    
+    NSLog(@"new count: %lu", self.bookmarkLinks.count);
+    //[self.tableView reloadData];
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSDictionary* remove = [self.bookmarkLinks objectAtIndex:indexPath.row];
+        [self removeFromBookmarks:remove];
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } /* else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }  */
+}
 
 /*
 // Override to support rearranging the table view.
