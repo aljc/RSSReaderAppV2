@@ -10,6 +10,7 @@
 
 @interface BookmarkTableViewController : UITableViewController
 
-@property NSArray* bookmarks;
+@property (strong, nonatomic) NSArray* bookmarksFromDefaults;
+@property (weak, nonatomic) IBOutlet UILabel *tit;
 
 @end

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		31275A991A912E970098C13C /* BookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31275A981A912E970098C13C /* BookmarkTableViewController.m */; };
 		31275A9C1A91322A0098C13C /* BookmarkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31275A9B1A91322A0098C13C /* BookmarkTableViewCell.m */; };
+		31A989581A91C4B4004BEE4D /* testTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A989571A91C4B4004BEE4D /* testTableViewController.m */; };
+		31A9895B1A91C932004BEE4D /* testtTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A9895A1A91C932004BEE4D /* testtTableViewController.m */; };
 		31DF260B1A8EBECF009C1ADE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF260A1A8EBECF009C1ADE /* main.m */; };
 		31DF260E1A8EBECF009C1ADE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF260D1A8EBECF009C1ADE /* AppDelegate.m */; };
 		31DF26111A8EBECF009C1ADE /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DF26101A8EBECF009C1ADE /* MasterViewController.m */; };
@@ -36,6 +38,10 @@
 		31275A981A912E970098C13C /* BookmarkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkTableViewController.m; sourceTree = "<group>"; };
 		31275A9A1A91322A0098C13C /* BookmarkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkTableViewCell.h; sourceTree = "<group>"; };
 		31275A9B1A91322A0098C13C /* BookmarkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkTableViewCell.m; sourceTree = "<group>"; };
+		31A989561A91C4B4004BEE4D /* testTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testTableViewController.h; sourceTree = "<group>"; };
+		31A989571A91C4B4004BEE4D /* testTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testTableViewController.m; sourceTree = "<group>"; };
+		31A989591A91C932004BEE4D /* testtTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testtTableViewController.h; sourceTree = "<group>"; };
+		31A9895A1A91C932004BEE4D /* testtTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testtTableViewController.m; sourceTree = "<group>"; };
 		31DF26051A8EBECF009C1ADE /* Splitsville.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splitsville.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DF26091A8EBECF009C1ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31DF260A1A8EBECF009C1ADE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 		31DF25FC1A8EBECF009C1ADE = {
 			isa = PBXGroup;
 			children = (
+				31A989561A91C4B4004BEE4D /* testTableViewController.h */,
+				31A989571A91C4B4004BEE4D /* testTableViewController.m */,
 				31DF26071A8EBECF009C1ADE /* Splitsville */,
 				31DF26241A8EBECF009C1ADE /* SplitsvilleTests */,
 				31DF26061A8EBECF009C1ADE /* Products */,
@@ -103,6 +111,8 @@
 				31DF26121A8EBECF009C1ADE /* DetailViewController.h */,
 				31DF26131A8EBECF009C1ADE /* DetailViewController.m */,
 				31DF26151A8EBECF009C1ADE /* Main.storyboard */,
+				31A989591A91C932004BEE4D /* testtTableViewController.h */,
+				31A9895A1A91C932004BEE4D /* testtTableViewController.m */,
 				31275A9A1A91322A0098C13C /* BookmarkTableViewCell.h */,
 				31275A9B1A91322A0098C13C /* BookmarkTableViewCell.m */,
 				31DF26341A8EBFD2009C1ADE /* MyDataFetchClass.h */,
@@ -246,9 +256,11 @@
 			files = (
 				31DF260E1A8EBECF009C1ADE /* AppDelegate.m in Sources */,
 				31DF26111A8EBECF009C1ADE /* MasterViewController.m in Sources */,
+				31A9895B1A91C932004BEE4D /* testtTableViewController.m in Sources */,
 				31275A991A912E970098C13C /* BookmarkTableViewController.m in Sources */,
 				31275A9C1A91322A0098C13C /* BookmarkTableViewCell.m in Sources */,
 				31DF260B1A8EBECF009C1ADE /* main.m in Sources */,
+				31A989581A91C4B4004BEE4D /* testTableViewController.m in Sources */,
 				31DF26361A8EBFD2009C1ADE /* MyDataFetchClass.m in Sources */,
 				31DF26331A8EBF1D009C1ADE /* ArticleTableViewCell.m in Sources */,
 				31DF26141A8EBECF009C1ADE /* DetailViewController.m in Sources */,

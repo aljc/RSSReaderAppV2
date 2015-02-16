@@ -9,38 +9,48 @@
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
-
+@property NSArray* bookmarksCopyFromDefaults;
 @end
 
 @implementation DetailViewController
 
 #pragma mark - Managing the detail item
 
+//for testing purposes - reset user defaults
+//Source: http://stackoverflow.com/questions/6358737/nsuserdefaults-reset
+- (void)resetNSUserDefaults {
+    NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+    for (NSString *key in [defaultsDictionary allKeys]) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 - (IBAction)addToBookmarks:(UIBarButtonItem *)sender {
+    
     if (self.linkItem == nil) {
         NSLog(@"You haven't selected an article yet");
         return;
     }
     
-    NSLog(@"ADD TO BOOKMARKS: SELF.LINK ITEM: %@", self.linkItem);
+     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _bookmarksCopyFromDefaults = [defaults arrayForKey:@"bookmarks"];
     
-    if (![self.bookmarks containsObject:self.linkItem]) {
-        //[self.bookmarks addObject:self.linkItem];
-        [self.bookmarks addObject:@1];
-        
-        //        NSLog(@"Detail bookmarks: %@", self.bookmarks);
-        NSLog(@"########NSUserDefaults##########: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:self.bookmarks forKey:@"bookmarks"];
-        [defaults synchronize];
-        NSLog(@"########NSUserDefaults##########: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
-    }
-    else {
-        NSLog(@"Already in bookmarks");
-    }
+    //add objects already stored in bookmarks
+    if (_bookmarksCopyFromDefaults != nil)
+        [self.bookmarks addObjectsFromArray:_bookmarksCopyFromDefaults];
+    
+    //append latest article to bookmarks array
+    [self.bookmarks addObject:self.linkItem];
+    
+    //replace bookmarks user defaults field with new consolidated array
+    [defaults setObject:self.bookmarks forKey:@"bookmarks"];
+    [defaults synchronize];
+    
+    NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    
     return;
-  }
+}
 
 //can't just use the default setter because we also want to update the view
 //(call configureView) after we set it
@@ -68,6 +78,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
     self.bookmarks = [[NSMutableArray alloc] init];
+    _bookmarksCopyFromDefaults = [[NSArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {

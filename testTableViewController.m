@@ -1,38 +1,27 @@
 //
-//  BookmarkTableViewController.m
+//  testTableViewController.m
 //  Splitsville
 //
-//  Created by ajchang on 2/15/15.
+//  Created by ajchang on 2/16/15.
 //  Copyright (c) 2015 Alice Chang. All rights reserved.
 //
 
-#import "BookmarkTableViewController.h"
-#import "BookmarkTableViewCell.h"
+#import "testTableViewController.h"
 
-@interface BookmarkTableViewController ()
+@interface testTableViewController ()
 
 @end
 
-@implementation BookmarkTableViewController
+@implementation testTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.bookmarksFromDefaults = [[NSArray alloc] init];
-    NSLog(@"%lu", [self.bookmarksFromDefaults count]);
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    if ([defaults arrayForKey:@"bookmarks"]!=nil) {
-        self.bookmarksFromDefaults = [defaults arrayForKey:@"bookmarks"];
-        NSLog(@"bookmarks: %@", self.bookmarksFromDefaults);
-    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,32 +32,26 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    //return [self.bookmarks count];
-    return [self.bookmarksFromDefaults count];
+    return 0;
 }
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"populating cell");
-    BookmarkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"bookmarkCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    NSLog(@"got here 1");
-    NSDictionary* currentArrayElement = [self.bookmarksFromDefaults objectAtIndex:indexPath.row];
-    NSLog(@"bookmark array element: %@", currentArrayElement);
-    NSLog(@"got here 2");
     // Configure the cell...
-    cell.title.text = [currentArrayElement objectForKey:@"title"];
-    NSLog(@"title: %@", [currentArrayElement objectForKey:@"title"]);
-    NSLog(@"got here 3");
     
-   
-      return cell;
+    return cell;
 }
+*/
 
 /*
 // Override to support conditional editing of the table view.
