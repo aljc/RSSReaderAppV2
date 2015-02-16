@@ -11,22 +11,21 @@
 #import "MyDataFetchClass.h"
 
 @interface BookmarkTableViewController ()
-@property NSArray* links;
+@property NSArray* bookmarkLinks;
 @end
 
 @implementation BookmarkTableViewController
 
 - (void)loadInitialData
 {
-    self.links = [[NSArray alloc] init];
+    self.bookmarkLinks = [[NSArray alloc] init];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     if ([defaults arrayForKey:@"bookmarks"]!=nil) {
-        self.links = [defaults arrayForKey:@"bookmarks"];
+        self.bookmarkLinks = [defaults arrayForKey:@"bookmarks"];
     }
 
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,15 +48,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return self.links.count;
+    NSLog(@"count: %lu", self.bookmarkLinks.count);
+    return self.bookmarkLinks.count;
+    
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"testt");
     BookmarkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"bookmarkCell" forIndexPath:indexPath];
     
-    NSDictionary* currentArrayElement = [self.links objectAtIndex:indexPath.row];
+    NSDictionary* currentArrayElement = [self.bookmarkLinks objectAtIndex:indexPath.row];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEE, dd MMM yyyy hh:mm:ss ZZZZZ"]; //matches exactly the current date format
@@ -77,13 +77,13 @@
 //Sending the URL of the tapped bookmark cell to the detailviewcontroller so that the DVC
 //can load the webview for you.
 - (void)tableView: (UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-     NSDictionary* currentArrayElement = [self.links objectAtIndex:indexPath.row];
+     NSDictionary* currentArrayElement = [self.bookmarkLinks objectAtIndex:indexPath.row];
     
     [self.delegate bookmark:self sendsURL:[NSURL URLWithString:[currentArrayElement objectForKey:@"link"]]];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
-
+//
 //// Override to support conditional editing of the table view
 //// This allows users to swipe to delete cells.
 //- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,11 +91,41 @@
 //    return YES;
 //}
 //
-//
+//- (void)removeFromBookmarks:(NSDictionary*) linkItem {
+//    if (self.bookmarkLinks == nil)
+//        return;
+//    
+//    int i;
+//    
+//    for (i=0; i < self.bookmarkLinks.count; i++) {
+//        NSDictionary* d = [self.bookmarkLinks objectAtIndex:i];
+//        if ([[d objectForKey:@"title"] isEqualToString:[linkItem objectForKey:@"title"]])
+//            break;
+//    }
+//    
+//    //article not bookmarked
+//    if (i == self.bookmarkLinks.count)
+//        return;
+//    
+//    NSMutableArray* newBookmarkLinks = [[NSMutableArray alloc]initWithCapacity:self.bookmarkLinks.count-1];
+//    
+//    for (int j=0; j < newBookmarkLinks.count; j++) {
+//        if (j < i)
+//            [newBookmarkLinks addObject:[self.bookmarkLinks objectAtIndex:j]];
+//        else
+//            [newBookmarkLinks addObject:[self.bookmarkLinks objectAtIndex:j+1]];
+//    }
+//    
+//    self.bookmarkLinks = newBookmarkLinks;
+//    NSLog(@"new count: %lu", self.bookmarkLinks.count);
+//    //[self.tableView reloadData];
+//}
 //
 //// Override to support editing the table view.
 //- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 //    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        NSDictionary* remove = [self.bookmarkLinks objectAtIndex:indexPath.row];
+//        [self removeFromBookmarks:remove];
 //        // Delete the row from the data source
 //        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 //    } /* else if (editingStyle == UITableViewCellEditingStyleInsert) {
