@@ -7,6 +7,7 @@
 //
 
 #import "MyDataFetchClass.h"
+#import <UIKit/UIKit.h>
 
 @implementation MyDataFetchClass
 
@@ -34,6 +35,23 @@
 
 #pragma - Requests
 
+//Tests whether there is an available network to connect to
+//Source: http://ios-blog.co.uk/tutorials/check-if-active-internet-connection-exists-on-ios-device/
+- (BOOL) isNetworkAvailable {
+    NSURL *sampleURL = [NSURL URLWithString:@"http://google.com"]; //sample url to load to test network availability
+    NSData *data = [NSData dataWithContentsOfURL:sampleURL];
+    if (data) {
+        NSLog(@"Network is available");
+        return YES;
+    }
+    else {
+        NSLog(@"Network is not available");
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"No Network Available" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil , nil];
+        [alertView show];
+        return NO;
+    }
+}
+
 - (void)getFeedWithURL:(NSString*)url
                  success:(void (^)(NSMutableArray *array, NSError *error))successCompletion
                  failure:(void (^)(void))failureCompletion
@@ -43,23 +61,25 @@
                                                      NSURLResponse *response,
                                                      NSError *error) {
                                      
-                                     // handle response
-//                                     NSLog(@"Data:%@",data);
-//                                     NSLog(@"Response:%@",response);
-//                                     NSLog(@"Error:%@",[error localizedDescription]);
-                                    
+                                     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                                     
                                      NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
                                      
-                                     if (httpResp.statusCode == 200) {
+                                     //if network is available and response was successful
+                                     if ([self isNetworkAvailable] && httpResp.statusCode == 200) {
                                          NSError *jsonError;
                                          
                                          NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
                                          //NSLog(@"DownloadedData:%@ \n---",dict);
                                          successCompletion([[[dict objectForKey:@"responseData"] objectForKey:@"feed"] objectForKey:@"entries"],nil);
+                                         
+                                         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                      } else {
                                          NSLog(@"Fail Not 200:");
                                          dispatch_async(dispatch_get_main_queue(), ^{
                                              if (failureCompletion) failureCompletion();
+                                             
+                                             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                          });
                                      }
                                  }] resume];
