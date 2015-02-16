@@ -10,6 +10,6 @@
 
 @interface BookmarkTableViewController : UITableViewController
 
-@property NSMutableArray *bookmarks;
+@property NSArray* bookmarks;
 
 @end

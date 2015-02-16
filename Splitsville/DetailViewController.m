@@ -18,7 +18,28 @@
 
 
 - (IBAction)addToBookmarks:(UIBarButtonItem *)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (self.linkItem == nil) {
+        NSLog(@"You haven't selected an article yet");
+        return;
+    }
+    
+    NSLog(@"ADD TO BOOKMARKS: SELF.LINK ITEM: %@", self.linkItem);
+    
+    if (![self.bookmarks containsObject:self.linkItem]) {
+        //[self.bookmarks addObject:self.linkItem];
+        [self.bookmarks addObject:@1];
+        
+        //        NSLog(@"Detail bookmarks: %@", self.bookmarks);
+        NSLog(@"########NSUserDefaults##########: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.bookmarks forKey:@"bookmarks"];
+        [defaults synchronize];
+        NSLog(@"########NSUserDefaults##########: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    }
+    else {
+        NSLog(@"Already in bookmarks");
+    }
+    return;
   }
 
 //can't just use the default setter because we also want to update the view
@@ -46,6 +67,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    self.bookmarks = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -18,8 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.bookmarks = [[NSMutableArray alloc] init];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    if ([defaults arrayForKey:@"bookmarks"]!=nil) {
+        self.bookmarks = [defaults arrayForKey:@"bookmarks"];
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

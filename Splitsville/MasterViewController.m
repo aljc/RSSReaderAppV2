@@ -32,11 +32,11 @@
         self.links = array;
         
         for (NSDictionary *link in self.links) {
-            NSLog(@"DownloadedData:%@\n%@\n%@\n%@",
-                  link[@"link"],
-                  link[@"contentSnippet"],
-                  link[@"publishedDate"],
-                  link[@"title"]);
+//            NSLog(@"DownloadedData:%@\n%@\n%@\n%@",
+//                  link[@"link"],
+//                  link[@"contentSnippet"],
+//                  link[@"publishedDate"],
+//                  link[@"title"]);
         }
         
         //update the table on the main thread
@@ -100,7 +100,7 @@
         NSLog(@"Prepare for segue");
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDictionary *link = [self.links objectAtIndex:indexPath.row];
-        NSLog(@"link: %@", link);
+//        NSLog(@"link: %@", link);
         
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:link];
@@ -124,7 +124,7 @@
 
     NSDictionary* currentArrayElement = [self.links objectAtIndex:indexPath.row];
     
-    NSLog(@"array: %@", currentArrayElement);
+    //NSLog(@"array: %@", currentArrayElement);
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEE, dd MMM yyyy hh:mm:ss ZZZZZ"]; //matches exactly the current date format
