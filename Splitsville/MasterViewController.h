@@ -10,10 +10,20 @@
 
 @class DetailViewController;
 
+/* Custom protocol */
+@protocol MasterToDetailViewControllerDelegate <NSObject>
+
+- (void)master:(id)sender sendsLoadStatus:(BOOL)isDoneLoading;
+
+@end
+
 @interface MasterViewController : UITableViewController
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property NSMutableArray *links;
+
+/* Delegate property */
+@property (weak, nonatomic) id<MasterToDetailViewControllerDelegate> delegate;
 
 @end
 

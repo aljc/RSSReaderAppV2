@@ -55,17 +55,93 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="Q74-Tv-8n9">
+                                <rect key="frame" x="280" y="227" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="4a3-3O-4Yx"/>
+                                    <constraint firstAttribute="width" constant="40" id="EwI-Nb-dDZ"/>
+                                    <constraint firstAttribute="width" constant="40" id="FbR-vg-4B5"/>
+                                    <constraint firstAttribute="height" constant="40" id="Xlm-E9-vl0"/>
+                                    <constraint firstAttribute="height" constant="40" id="hPT-rD-zat"/>
+                                    <constraint firstAttribute="height" constant="40" id="oDp-jd-UMd"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4a3-3O-4Yx"/>
+                                        <exclude reference="EwI-Nb-dDZ"/>
+                                        <exclude reference="FbR-vg-4B5"/>
+                                        <exclude reference="Xlm-E9-vl0"/>
+                                        <exclude reference="hPT-rD-zat"/>
+                                        <exclude reference="oDp-jd-UMd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="4a3-3O-4Yx"/>
+                                        <include reference="Xlm-E9-vl0"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="FbR-vg-4B5"/>
+                                        <include reference="hPT-rD-zat"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="EwI-Nb-dDZ"/>
+                                        <include reference="oDp-jd-UMd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="16" y="72" width="40" height="40"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JMG-pS-3nv" firstAttribute="bottom" secondItem="svH-Pt-448" secondAttribute="bottomMargin" id="8Uj-Nt-Yvz"/>
+                            <constraint firstItem="Q74-Tv-8n9" firstAttribute="trailing" secondItem="svH-Pt-448" secondAttribute="trailingMargin" constant="10" id="H9g-hD-2ct"/>
+                            <constraint firstItem="Q74-Tv-8n9" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="10" id="HhS-sM-G4H"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JMG-pS-3nv" secondAttribute="trailing" constant="-16" id="MGo-a6-uGh"/>
                             <constraint firstItem="JMG-pS-3nv" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="OWD-Lk-vv4"/>
                             <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="TrM-Qw-kjH" secondAttribute="bottom" constant="44" id="Otb-lK-AvH"/>
+                            <constraint firstItem="Q74-Tv-8n9" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-10" id="X4f-WU-Rxh"/>
+                            <constraint firstItem="Q74-Tv-8n9" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="10" id="YDJ-CR-oCK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TrM-Qw-kjH" secondAttribute="trailing" constant="-16" id="YQY-Gh-xE1"/>
+                            <constraint firstItem="Q74-Tv-8n9" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="10" id="dUd-g7-hd0"/>
                             <constraint firstItem="TrM-Qw-kjH" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="ow6-A6-2dk"/>
+                            <constraint firstItem="Q74-Tv-8n9" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="10" id="uuL-pp-Q2L"/>
                             <constraint firstItem="TrM-Qw-kjH" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="-16" id="xOP-Xh-18B"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="H9g-hD-2ct"/>
+                                <exclude reference="HhS-sM-G4H"/>
+                                <exclude reference="X4f-WU-Rxh"/>
+                                <exclude reference="YDJ-CR-oCK"/>
+                                <exclude reference="dUd-g7-hd0"/>
+                                <exclude reference="uuL-pp-Q2L"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="HhS-sM-G4H"/>
+                                <include reference="X4f-WU-Rxh"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="YDJ-CR-oCK"/>
+                                <include reference="dUd-g7-hd0"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="H9g-hD-2ct"/>
+                                <include reference="uuL-pp-Q2L"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
@@ -235,6 +311,9 @@
             <point key="canvasLocation" x="-40" y="120"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="star" width="472" height="472"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GIo-R1-koI"/>
     </inferredMetricsTieBreakers>

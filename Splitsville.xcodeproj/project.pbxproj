@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31275A9C1A91322A0098C13C /* BookmarkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31275A9B1A91322A0098C13C /* BookmarkTableViewCell.m */; };
+		3147A9CB1A95A68400E1A97C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3147A9CA1A95A68400E1A97C /* Settings.bundle */; };
 		31A9895B1A91C932004BEE4D /* BookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A9895A1A91C932004BEE4D /* BookmarkTableViewController.m */; };
 		31C42B8D1A9273F400F1616D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C42B8C1A9273F400F1616D /* UIKit.framework */; };
 		31C42B8F1A9273FA00F1616D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C42B8E1A9273FA00F1616D /* Social.framework */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		31275A9A1A91322A0098C13C /* BookmarkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkTableViewCell.h; sourceTree = "<group>"; };
 		31275A9B1A91322A0098C13C /* BookmarkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkTableViewCell.m; sourceTree = "<group>"; };
+		3147A9CA1A95A68400E1A97C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		31A989591A91C932004BEE4D /* BookmarkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkTableViewController.h; sourceTree = "<group>"; };
 		31A9895A1A91C932004BEE4D /* BookmarkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkTableViewController.m; sourceTree = "<group>"; };
 		31C42B8C1A9273F400F1616D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -113,6 +115,7 @@
 				31DF26151A8EBECF009C1ADE /* Main.storyboard */,
 				31A989591A91C932004BEE4D /* BookmarkTableViewController.h */,
 				31A9895A1A91C932004BEE4D /* BookmarkTableViewController.m */,
+				3147A9CA1A95A68400E1A97C /* Settings.bundle */,
 				31275A9A1A91322A0098C13C /* BookmarkTableViewCell.h */,
 				31275A9B1A91322A0098C13C /* BookmarkTableViewCell.m */,
 				31DF26341A8EBFD2009C1ADE /* MyDataFetchClass.h */,
@@ -232,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3147A9CB1A95A68400E1A97C /* Settings.bundle in Resources */,
 				31DF26171A8EBECF009C1ADE /* Main.storyboard in Resources */,
 				31DF261C1A8EBECF009C1ADE /* LaunchScreen.xib in Resources */,
 				31DF26191A8EBECF009C1ADE /* Images.xcassets in Resources */,

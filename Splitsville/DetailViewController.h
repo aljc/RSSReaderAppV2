@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BookmarkTableViewController.h"
 
-@interface DetailViewController : UIViewController <BookmarkToWebViewDelegate>
+@interface DetailViewController : UIViewController <BookmarkToWebViewDelegate> <MasterToDetailViewControllerDelegate>
 
 @property (strong, nonatomic) NSDictionary *linkItem;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;

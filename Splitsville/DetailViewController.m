@@ -112,12 +112,23 @@
     }
 }
 
+//Source: https://github.com/uchicago-mobi/2015-Winter-Forum/issues/149
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
     self.bookmarks = [[NSMutableArray alloc] init];
     _bookmarksCopyFromDefaults = [[NSArray alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //present the splash screen view controller after DVC is loaded, but before its view appears on screen
+    UIViewController *splashScreen = [[UIViewController alloc] init];
+    splashScreen.view.backgroundColor = [UIColor greenColor];
+    [self presentViewController:splashScreen animated:NO completion:^{
+        NSLog(@"Splash screen is showing");
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -141,11 +152,25 @@
 }
 
 #pragma mark - BookmarkDelegateProtocol Methods
-//will be called from the BookmarkViewController, which has set this DetailViewController as its delegate.
+//BVC sends URL to be loaded to DVC, so DVC can load the webview.
+//Will be called from the BookmarkViewController, which has set this DetailViewController as its delegate.
 //Grab the URL of the *tapped bookmark cell* from the BVC and load the webview.
 - (void)bookmark:(id)sender sendsURL:(NSURL*)url {
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self setPreferenceDefaults];
+    return true;
+}
+
+- (void)setPreferenceDefaults {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:[NSDate date] forKey:@"Initial Run"];
+    [defaults registerDefaults:appDefaults];
+    
+    NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 
 @end
