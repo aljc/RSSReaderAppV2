@@ -72,7 +72,7 @@
 
 - (void)customizeAppearance
 {
-    NSLog(@"customizingn appearance");
+    NSLog(@"customizing appearance");
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBackgroundColor:[UIColor redColor]];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
