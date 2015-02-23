@@ -62,19 +62,18 @@
     //Reload the data - repopulate the issuesData array! ***
     [self loadInitialData];
 }
-
-//when relaunching the application from the background, reload the settings
-//Note: there is an iOS 8 bug where applications never transition out of inactive.
-//http://stackoverflow.com/questions/26059927/applicationdidbecomeactive-not-called-when-launching-app-from-banner-custom-acti
-- (void) applicationDidBecomeActive:(UIApplication *)application {
-    self.nightReadingModeOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"TurnNightReadingModeOn"] ? YES : NO;
-    NSLog(self.nightReadingModeOn ? @"Yes" : @"No");
-}
+//
+////when relaunching the application from the background, reload the settings
+////Note: there is an iOS 8 bug where applications never transition out of inactive.
+////http://stackoverflow.com/questions/26059927/applicationdidbecomeactive-not-called-when-launching-app-from-banner-custom-acti
+//- (void) applicationDidBecomeActive:(UIApplication *)application {
+//    self.nightReadingModeOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"TurnNightReadingModeOn"] ? YES : NO;
+//    NSLog(self.nightReadingModeOn ? @"Yes" : @"No");
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self setPreferenceDefaults];
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
@@ -132,7 +131,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"articleCell" forIndexPath:indexPath];
     
-    BOOL nightReadingModeOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"TurnNightReadingModeOn"] ? YES : NO;
+    Boolean nightReadingModeOn = [[NSUserDefaults standardUserDefaults] boolForKey:@"TurnNightReadingModeOn"];
     
     NSDictionary* currentArrayElement = [self.links objectAtIndex:indexPath.row];
     
@@ -148,8 +147,10 @@
     cell.date.text = [dateFormatter stringFromDate:[NSDate date]];
     cell.preview.text = [currentArrayElement objectForKey:@"contentSnippet"];
     
+     NSLog(@"!!NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    
     //if night mode is turned on, then adjust the colors
-    if (nightReadingModeOn) {
+    if (nightReadingModeOn == YES) {
         NSLog(@"night mode ON");
         cell.backgroundColor = [UIColor blackColor];
         cell.title.textColor = [UIColor whiteColor];
@@ -175,6 +176,11 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self setPreferenceDefaults];
+    return YES;
 }
 
 - (void)setPreferenceDefaults {
