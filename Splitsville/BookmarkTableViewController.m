@@ -29,9 +29,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //http://www.appcoda.com/self-sizing-cells/
+    self.tableView.estimatedRowHeight = 53.0; //set estimated row height of cell = height of existing prototype cell
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 
     [self loadInitialData];
     [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.tableView reloadData]; //force a reload after the view appears
+    //to ensure that all cells are displayed with correct row height upon
+    //first load
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,7 +58,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    NSLog(@"count: %lu", self.bookmarkLinks.count);
+
     return self.bookmarkLinks.count;
     
 }
@@ -112,7 +122,7 @@
     int index;
     
     NSInteger len = bkmks.count;
-    NSLog (@"prev count: %ld", len);
+
     
     for (index=0; index < len; index++) {
         NSDictionary* d = [bkmks objectAtIndex:index];
@@ -139,7 +149,7 @@
     
     [self loadInitialData];
     
-    NSLog(@"new count: %lu", self.bookmarkLinks.count);
+
     //[self.tableView reloadData];
 }
 

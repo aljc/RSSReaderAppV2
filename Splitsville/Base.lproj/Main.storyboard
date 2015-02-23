@@ -208,25 +208,59 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhq-dK-cV8">
-                                            <rect key="frame" x="8" y="0.0" width="584" height="25"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2/15/15" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QB0-oP-i3i">
+                                            <rect key="frame" x="8" y="20" width="50" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="0Ht-FD-32C"/>
+                                                <constraint firstAttribute="width" constant="50" id="TWm-TE-8My"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="TWm-TE-8My"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3g5-mX-Hbw">
+                                            <rect key="frame" x="441" y="20" width="51" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="FsR-uh-kMN"/>
+                                                <constraint firstAttribute="width" constant="50" id="kLj-L1-qsG"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="kLj-L1-qsG"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhq-dK-cV8">
+                                            <rect key="frame" x="8" y="3" width="31" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2/15/15" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QB0-oP-i3i">
-                                            <rect key="frame" x="8" y="26" width="140" height="13"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Preview" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3g5-mX-Hbw">
-                                            <rect key="frame" x="77" y="26" width="515" height="13"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Lhq-dK-cV8" firstAttribute="top" secondItem="Zmb-uu-VI8" secondAttribute="topMargin" constant="-5" id="2EY-lj-q1e"/>
+                                        <constraint firstItem="Lhq-dK-cV8" firstAttribute="leading" secondItem="Zmb-uu-VI8" secondAttribute="leadingMargin" id="8aQ-uq-d0i"/>
+                                        <constraint firstItem="QB0-oP-i3i" firstAttribute="bottom" secondItem="3g5-mX-Hbw" secondAttribute="bottom" id="9ja-6W-dfQ"/>
+                                        <constraint firstItem="QB0-oP-i3i" firstAttribute="top" secondItem="Zmb-uu-VI8" secondAttribute="topMargin" constant="5" id="EMh-HZ-o7I"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="QB0-oP-i3i" secondAttribute="bottom" constant="-5" id="FYI-Ok-z64"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="3g5-mX-Hbw" secondAttribute="trailing" id="Kj6-2s-x62"/>
+                                        <constraint firstItem="QB0-oP-i3i" firstAttribute="bottom" secondItem="3g5-mX-Hbw" secondAttribute="bottom" id="LX4-ca-nFP"/>
+                                        <constraint firstItem="Lhq-dK-cV8" firstAttribute="leading" secondItem="QB0-oP-i3i" secondAttribute="leading" id="WkS-gr-YEy"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="3g5-mX-Hbw" secondAttribute="bottom" constant="-5" id="ggW-mF-QGb"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="EMh-HZ-o7I"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -251,7 +285,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqO-Zi-Um2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1447" y="30"/>
+            <point key="canvasLocation" x="1447" y="27"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
