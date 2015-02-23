@@ -65,8 +65,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-
+    
+    self.tableView.estimatedRowHeight = 89.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     self.links = [[NSMutableArray alloc] init]; //initialize the array

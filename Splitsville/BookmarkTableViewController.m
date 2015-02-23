@@ -31,14 +31,16 @@
     [super viewDidLoad];
     
     //http://www.appcoda.com/self-sizing-cells/
-    self.tableView.estimatedRowHeight = 53.0; //set estimated row height of cell = height of existing prototype cell
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 89.0; //set estimated row height of cell = height of existing prototype cell
+    self.tableView.rowHeight = UITableViewAutomaticDimension; //self-sizing cells
 
     [self loadInitialData];
     [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     [self.tableView reloadData]; //force a reload after the view appears
     //to ensure that all cells are displayed with correct row height upon
     //first load
