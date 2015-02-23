@@ -81,6 +81,8 @@
     cell.bookmarkDate.text = [dateFormatter stringFromDate:[NSDate date]];
     cell.bookmarkPreview.text = [currentArrayElement objectForKey:@"contentSnippet"];
     
+    [cell layoutIfNeeded];
+    
     return cell;
 }
 

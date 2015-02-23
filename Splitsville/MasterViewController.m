@@ -150,9 +150,8 @@
         cell.date.textColor = [UIColor whiteColor];
         cell.preview.textColor = [UIColor whiteColor];
     }
-    //else {
-    //    //NSLog(@"night mode NOT ON");
-    //}
+    
+    [cell layoutIfNeeded];
     
     return cell;
 }
