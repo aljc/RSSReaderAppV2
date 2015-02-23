@@ -62,14 +62,6 @@
     //Reload the data - repopulate the issuesData array! ***
     [self loadInitialData];
 }
-//
-////when relaunching the application from the background, reload the settings
-////Note: there is an iOS 8 bug where applications never transition out of inactive.
-////http://stackoverflow.com/questions/26059927/applicationdidbecomeactive-not-called-when-launching-app-from-banner-custom-acti
-//- (void) applicationDidBecomeActive:(UIApplication *)application {
-//    self.nightReadingModeOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"TurnNightReadingModeOn"] ? YES : NO;
-//    NSLog(self.nightReadingModeOn ? @"Yes" : @"No");
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -176,17 +168,12 @@
     }
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [self setPreferenceDefaults];
-    return YES;
-}
-
-- (void)setPreferenceDefaults {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"TurnNightReadingModeOn"];
-    [defaults registerDefaults:appDefaults];
-    
-    NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
-}
+//- (void)setPreferenceDefaults {
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"TurnNightReadingModeOn"];
+//    [defaults registerDefaults:appDefaults];
+//    
+//    NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+//}
 
 @end

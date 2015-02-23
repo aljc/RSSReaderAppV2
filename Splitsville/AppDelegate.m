@@ -22,6 +22,15 @@
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
     splitViewController.delegate = self;
+    
+    //initialize the settings
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"TurnNightReadingModeOn"];
+    [defaults registerDefaults:appDefaults];
+
+    //override point for customization after application launch
+    [self customizeAppearance];
+
     return YES;
 }
 
@@ -33,6 +42,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -56,6 +66,17 @@
     } else {
         return NO;
     }
+}
+
+#pragma mark - Appearance Proxy
+
+- (void)customizeAppearance
+{
+    NSLog(@"customizingn appearance");
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBackgroundColor:[UIColor redColor]];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    
 }
 
 @end

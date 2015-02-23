@@ -106,19 +106,6 @@
 
 }
 
-/* for some reason, this isn't triggering when the app enters the background.
- Could it be due to the ios 8 bug?  http://stackoverflow.com/questions/26059927/applicationdidbecomeactive-not-called-when-launching-app-from-banner-custom-acti
- //looks like we will just manually need to override lastViewedArticle in NSUserDefaults every time we click on a new link.
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    NSLog(@"DID ENTER BACKGROUND");
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (self.linkItem) { //if user has clicked on at least 1 article, save the last viewed article
-        //to preload for next time app is opened
-        [defaults setObject:self.linkItem forKey:@"lastViewedArticle"];
-        [defaults synchronize];
-    }
-} */
-
 
 //custom method to update the onscreen view
 - (void)configureView {
