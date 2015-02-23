@@ -74,6 +74,14 @@
                                          successCompletion([[[dict objectForKey:@"responseData"] objectForKey:@"feed"] objectForKey:@"entries"],nil);
                                          
                                          [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                         
+                                         
+                                         NSLog(@"done loading");
+                                         //now that data has finished loading, send a notification
+                                         [[NSNotificationCenter defaultCenter]
+                                          postNotificationName:@"mobi.uchicago.finishedLoading" object:self];
+                                         NSLog(@"posted notification");
+                                         
                                      } else {
                                          NSLog(@"Fail Not 200:");
                                          dispatch_async(dispatch_get_main_queue(), ^{

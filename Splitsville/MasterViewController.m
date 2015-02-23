@@ -14,6 +14,7 @@
 @interface MasterViewController ()
 
 @property NSMutableArray *objects;
+@property BOOL nightReadingModeOn;
 
 @end
 
@@ -30,6 +31,7 @@
     [[MyDataFetchClass sharedNetworking] getFeedWithURL:@"http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss" success:^(NSMutableArray *array, NSError *error) {
     
         self.links = array;
+        NSLog(@"loading");
         
 //        for (NSDictionary *link in self.links) {
 //            NSLog(@"DownloadedData:%@\n%@\n%@\n%@",
@@ -38,7 +40,7 @@
 //                  link[@"publishedDate"],
 //                  link[@"title"]);
 //        }
-        
+//        
         //update the table on the main thread
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
@@ -61,10 +63,18 @@
     [self loadInitialData];
 }
 
+//when relaunching the application from the background, reload the settings
+//Note: there is an iOS 8 bug where applications never transition out of inactive.
+//http://stackoverflow.com/questions/26059927/applicationdidbecomeactive-not-called-when-launching-app-from-banner-custom-acti
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+    self.nightReadingModeOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"TurnNightReadingModeOn"] ? YES : NO;
+    NSLog(self.nightReadingModeOn ? @"Yes" : @"No");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self setPreferenceDefaults];
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
@@ -121,7 +131,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"articleCell" forIndexPath:indexPath];
-
+    
+    BOOL nightReadingModeOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"TurnNightReadingModeOn"] ? YES : NO;
+    
     NSDictionary* currentArrayElement = [self.links objectAtIndex:indexPath.row];
     
     //NSLog(@"array: %@", currentArrayElement);
@@ -135,6 +147,18 @@
     cell.title.text = [currentArrayElement objectForKey:@"title"];
     cell.date.text = [dateFormatter stringFromDate:[NSDate date]];
     cell.preview.text = [currentArrayElement objectForKey:@"contentSnippet"];
+    
+    //if night mode is turned on, then adjust the colors
+    if (nightReadingModeOn) {
+        NSLog(@"night mode ON");
+        cell.backgroundColor = [UIColor blackColor];
+        cell.title.textColor = [UIColor whiteColor];
+        cell.date.textColor = [UIColor whiteColor];
+        cell.preview.textColor = [UIColor whiteColor];
+    }
+    else {
+        NSLog(@"night mode NOT ON");
+    }
     
     return cell;
 }
@@ -151,6 +175,14 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+- (void)setPreferenceDefaults {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"TurnNightReadingModeOn"];
+    [defaults registerDefaults:appDefaults];
+    
+    NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 
 @end

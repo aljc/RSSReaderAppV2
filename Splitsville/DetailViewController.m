@@ -11,6 +11,7 @@
 
 @interface DetailViewController ()
 @property NSArray* bookmarksCopyFromDefaults;
+@property BOOL finishedLoading;
 @end
 
 @implementation DetailViewController
@@ -101,6 +102,17 @@
 
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    NSLog(@"DID ENTER BACKGROUND ~~~~~~~~~~");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (self.linkItem) { //if user has clicked on at least 1 article, save the last viewed article
+        //to preload for next time app is opened
+        [defaults setObject:self.linkItem forKey:@"lastViewedArticle"];
+        [defaults synchronize];
+    }
+}
+
+
 //custom method to update the onscreen view
 - (void)configureView {
     // Update the user interface for the detail item.
@@ -115,7 +127,10 @@
 //Source: https://github.com/uchicago-mobi/2015-Winter-Forum/issues/149
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view, typically from a nib.
+    self.linkItem = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastViewedArticle"];
+    
     [self configureView];
     self.bookmarks = [[NSMutableArray alloc] init];
     _bookmarksCopyFromDefaults = [[NSArray alloc] init];
@@ -124,11 +139,36 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     //present the splash screen view controller after DVC is loaded, but before its view appears on screen
-    UIViewController *splashScreen = [[UIViewController alloc] init];
-    splashScreen.view.backgroundColor = [UIColor greenColor];
-    [self presentViewController:splashScreen animated:NO completion:^{
-        NSLog(@"Splash screen is showing");
-    }];
+    //show the splash screen while data is being downloaded.
+    
+    NSLog(@"view will appear");
+    
+    //only present the splash screen once, i.e. when the data is still downloading
+//    if (!self.finishedLoading) {
+//        UIViewController *splashScreen = [[UIViewController alloc] init];
+//        splashScreen.view.backgroundColor = [UIColor greenColor];
+//        [self presentViewController:splashScreen animated:NO completion:^{
+//            NSLog(@"Splash screen is showing");
+//        }];
+//        
+//        //be listening for a "finished loading" notification, and trigger the dismissSplash function when that happens
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissSplash:) name:@"mobi.uchicago.finishedLoading" object:nil];
+//    }
+//    
+    
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"mobi.uchicago.finishedLoading" object:nil];
+}
+
+- (void)dismissSplash:(NSNotification*)notif {
+    NSLog(@"dismiss splash");
+    self.finishedLoading = YES;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -158,19 +198,6 @@
 - (void)bookmark:(id)sender sendsURL:(NSURL*)url {
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
-}
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [self setPreferenceDefaults];
-    return true;
-}
-
-- (void)setPreferenceDefaults {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:[NSDate date] forKey:@"Initial Run"];
-    [defaults registerDefaults:appDefaults];
-    
-    NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 
 @end

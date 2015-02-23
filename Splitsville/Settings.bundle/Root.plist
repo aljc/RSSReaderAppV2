@@ -18,7 +18,7 @@
 			<key>Key</key>
 			<string>TurnNightReadingModeOn</string>
 			<key>DefaultValue</key>
-			<false/>
+			<true/>
 		</dict>
 	</array>
 	<key>StringsTable</key>
