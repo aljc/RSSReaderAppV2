@@ -345,10 +345,16 @@
         
         bvc.delegate = self;
         
+        //The following will make the popover segue possible on ios8 iPhones! (not just iPads)
+        //Source: http://rbnsn.me/posts/2014/09/08/ios-8-popover-presentations/
+        UIPopoverPresentationController *popPC = bvc.popoverPresentationController;
+        popPC.delegate = self;
     }
 }
 
-
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    return UIModalPresentationNone;
+}
 
 #pragma mark - BookmarkDelegateProtocol Methods
 
