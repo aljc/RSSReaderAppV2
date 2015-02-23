@@ -9,8 +9,8 @@
 
 
 #import "DetailViewController.h"
-
 #import <Social/Social.h>
+#import "Bookmark.h"
 
 
 
@@ -92,12 +92,8 @@
     
     if (self.linkItem == nil) {
         NSLog(@"You haven't selected an article yet");
-        
         return;
-        
     }
-    
-    
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _bookmarksCopyFromDefaults = [defaults arrayForKey:@"bookmarks"];
@@ -116,12 +112,33 @@
         
         [defaults setObject:self.bookmarks forKey:@"bookmarks"];
         [defaults synchronize];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"EEE, dd MMM yyyy hh:mm:ss ZZZZZ"]; //matches exactly the current date format
+        [dateFormatter setDateStyle:NSDateFormatterShortStyle]; //** specify the date format you want to display
+        NSDate *dateFromString = [[NSDate alloc] init];
+        dateFromString = [dateFormatter dateFromString:[self.linkItem objectForKey:@"publishedDate"]];
+        
+        Bookmark *b = [[Bookmark alloc] init];
+        b.date = [dateFormatter stringFromDate:[NSDate date]];
+        b.title = [self.linkItem objectForKey:@"title"];
+        b.preview = [self.linkItem objectForKey:@"contentSnippet"];
+        b.link = [self.linkItem objectForKey:@"link"];
+        
+        // File path
+        NSError* err = nil;
+        NSURL *docs = [[NSFileManager new] URLForDirectory:NSDocumentDirectory
+                                                  inDomain:NSUserDomainMask appropriateForURL:nil
+                                                    create:YES error:&err];
+        
+        // Write
+        NSData* bookmarkData = [NSKeyedArchiver archivedDataWithRootObject:b];
+        NSURL* file = [docs URLByAppendingPathComponent:@"bookmarks.plist"];
+        [bookmarkData writeToURL:file atomically:NO];
+
     }
 
     NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
-    
-    
-    
     return;
     
 }
@@ -266,38 +283,22 @@
     
     
     //present the splash screen view controller after DVC is loaded, but before its view appears on screen
-    
     //show the splash screen while data is being downloaded.
-    
-    
     
     NSLog(@"view will appear");
     
-    
-    
-    //only present the splash screen once, i.e. when the data is still downloading
-    
-    //    if (!self.finishedLoading) {
-    
-    //        UIViewController *splashScreen = [[UIViewController alloc] init];
-    
-    //        splashScreen.view.backgroundColor = [UIColor greenColor];
-    
-    //        [self presentViewController:splashScreen animated:NO completion:^{
-    
-    //            NSLog(@"Splash screen is showing");
-    
-    //        }];
-    
-    //
-    
-    //        //be listening for a "finished loading" notification, and trigger the dismissSplash function when that happens
-    
-    //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissSplash:) name:@"mobi.uchicago.finishedLoading" object:nil];
-    
-    //    }
-    
-    //
+//   //only present the splash screen once, i.e. when the data is still downloading
+//        if (!self.finishedLoading) {
+//            UIViewController *splashScreen = [[UIViewController alloc] init];
+//            splashScreen.view.backgroundColor = [UIColor greenColor];
+//            [self presentViewController:splashScreen animated:NO completion:^{
+//                NSLog(@"Splash screen is showing");
+//            }];
+//    
+//            //be listening for a "finished loading" notification, and trigger the dismissSplash function when that happens
+//            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissSplash:) name:@"mobi.uchicago.finishedLoading" object:nil];
+//        }
+
 }
 
 
@@ -308,15 +309,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"mobi.uchicago.finishedLoading" object:nil];
 }
 
-
-
 - (void)dismissSplash:(NSNotification*)notif {
     NSLog(@"dismiss splash");
     self.finishedLoading = YES;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     
@@ -324,11 +321,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
 #pragma mark - Segues
-
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -359,9 +352,7 @@
 #pragma mark - BookmarkDelegateProtocol Methods
 
 //BVC sends URL to be loaded to DVC, so DVC can load the webview.
-
 //Will be called from the BookmarkViewController, which has set this DetailViewController as its delegate.
-
 //Grab the URL of the *tapped bookmark cell* from the BVC and load the webview.
 
 - (void)bookmark:(id)sender sendsURL:(NSURL*)url {
@@ -376,19 +367,14 @@
 #pragma mark - UIWebView delegate methods
 
 - (void) webViewDidStartLoad:(UIWebView *)webView {
-    
     //_loadingView.hidden = NO; //Note: this will make the loading view flicker.
-    
     //better to just hide the loading view the first time it hits webViewDidFinishLoad.
-    
 }
 
 
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
-    
-    _loadingView.hidden = YES;
-    
+    _loadingView.hidden = YES;    
 }
 
 

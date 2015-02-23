@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		31275A9C1A91322A0098C13C /* BookmarkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31275A9B1A91322A0098C13C /* BookmarkTableViewCell.m */; };
 		3147A9CB1A95A68400E1A97C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3147A9CA1A95A68400E1A97C /* Settings.bundle */; };
+		3179550B1A9BD41B008DA8D3 /* Bookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 3179550A1A9BD41B008DA8D3 /* Bookmark.m */; };
+		3179550D1A9BDFDB008DA8D3 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 3179550C1A9BDFDB008DA8D3 /* LaunchScreen.png */; };
 		31A9895B1A91C932004BEE4D /* BookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A9895A1A91C932004BEE4D /* BookmarkTableViewController.m */; };
 		31C42B8D1A9273F400F1616D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C42B8C1A9273F400F1616D /* UIKit.framework */; };
 		31C42B8F1A9273FA00F1616D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C42B8E1A9273FA00F1616D /* Social.framework */; };
@@ -38,6 +40,9 @@
 		31275A9A1A91322A0098C13C /* BookmarkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkTableViewCell.h; sourceTree = "<group>"; };
 		31275A9B1A91322A0098C13C /* BookmarkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkTableViewCell.m; sourceTree = "<group>"; };
 		3147A9CA1A95A68400E1A97C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		317955091A9BD41B008DA8D3 /* Bookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bookmark.h; sourceTree = "<group>"; };
+		3179550A1A9BD41B008DA8D3 /* Bookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bookmark.m; sourceTree = "<group>"; };
+		3179550C1A9BDFDB008DA8D3 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LaunchScreen.png; path = Splitsville/Images.xcassets/LaunchScreen.imageset/LaunchScreen.png; sourceTree = "<group>"; };
 		31A989591A91C932004BEE4D /* BookmarkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkTableViewController.h; sourceTree = "<group>"; };
 		31A9895A1A91C932004BEE4D /* BookmarkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkTableViewController.m; sourceTree = "<group>"; };
 		31C42B8C1A9273F400F1616D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -86,6 +91,7 @@
 		31DF25FC1A8EBECF009C1ADE = {
 			isa = PBXGroup;
 			children = (
+				3179550C1A9BDFDB008DA8D3 /* LaunchScreen.png */,
 				31C42B8E1A9273FA00F1616D /* Social.framework */,
 				31C42B8C1A9273F400F1616D /* UIKit.framework */,
 				31DF26071A8EBECF009C1ADE /* Splitsville */,
@@ -112,6 +118,8 @@
 				31DF26101A8EBECF009C1ADE /* MasterViewController.m */,
 				31DF26121A8EBECF009C1ADE /* DetailViewController.h */,
 				31DF26131A8EBECF009C1ADE /* DetailViewController.m */,
+				317955091A9BD41B008DA8D3 /* Bookmark.h */,
+				3179550A1A9BD41B008DA8D3 /* Bookmark.m */,
 				31DF26151A8EBECF009C1ADE /* Main.storyboard */,
 				31A989591A91C932004BEE4D /* BookmarkTableViewController.h */,
 				31A9895A1A91C932004BEE4D /* BookmarkTableViewController.m */,
@@ -236,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3147A9CB1A95A68400E1A97C /* Settings.bundle in Resources */,
+				3179550D1A9BDFDB008DA8D3 /* LaunchScreen.png in Resources */,
 				31DF26171A8EBECF009C1ADE /* Main.storyboard in Resources */,
 				31DF261C1A8EBECF009C1ADE /* LaunchScreen.xib in Resources */,
 				31DF26191A8EBECF009C1ADE /* Images.xcassets in Resources */,
@@ -259,6 +268,7 @@
 				31DF260E1A8EBECF009C1ADE /* AppDelegate.m in Sources */,
 				31DF26111A8EBECF009C1ADE /* MasterViewController.m in Sources */,
 				31A9895B1A91C932004BEE4D /* BookmarkTableViewController.m in Sources */,
+				3179550B1A9BD41B008DA8D3 /* Bookmark.m in Sources */,
 				31275A9C1A91322A0098C13C /* BookmarkTableViewCell.m in Sources */,
 				31DF260B1A8EBECF009C1ADE /* main.m in Sources */,
 				31DF26361A8EBFD2009C1ADE /* MyDataFetchClass.m in Sources */,
