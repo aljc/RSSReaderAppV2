@@ -82,6 +82,10 @@
 - (void)setDetailItem:(NSDictionary *)newLinkItem { //**must be named setDetailItem to override existing function
     if (self.linkItem != newLinkItem) { //if view isn't already onscreen
         self.linkItem = newLinkItem;
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.linkItem forKey:@"lastViewedArticle"];
+        [defaults synchronize];
+        
         [self configureView];
         NSLog(@"setter override");
     }
@@ -102,15 +106,18 @@
 
 }
 
+/* for some reason, this isn't triggering when the app enters the background.
+ Could it be due to the ios 8 bug?  http://stackoverflow.com/questions/26059927/applicationdidbecomeactive-not-called-when-launching-app-from-banner-custom-acti
+ //looks like we will just manually need to override lastViewedArticle in NSUserDefaults every time we click on a new link.
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    NSLog(@"DID ENTER BACKGROUND ~~~~~~~~~~");
+    NSLog(@"DID ENTER BACKGROUND");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (self.linkItem) { //if user has clicked on at least 1 article, save the last viewed article
         //to preload for next time app is opened
         [defaults setObject:self.linkItem forKey:@"lastViewedArticle"];
         [defaults synchronize];
     }
-}
+} */
 
 
 //custom method to update the onscreen view
@@ -129,7 +136,9 @@
     [super viewDidLoad];
 
     // Do any additional setup after loading the view, typically from a nib.
-    self.linkItem = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastViewedArticle"];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"lastViewedArticle"]!=nil) {
+        self.linkItem = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastViewedArticle"];
+    }
     
     [self configureView];
     self.bookmarks = [[NSMutableArray alloc] init];

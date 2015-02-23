@@ -77,7 +77,12 @@
 //Sending the URL of the tapped bookmark cell to the detailviewcontroller so that the DVC
 //can load the webview for you.
 - (void)tableView: (UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-     NSDictionary* currentArrayElement = [self.bookmarkLinks objectAtIndex:indexPath.row];
+    NSDictionary* currentArrayElement = [self.bookmarkLinks objectAtIndex:indexPath.row];
+    
+    //both master view link and bookmark links count as "lastViewedArticle"s
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:currentArrayElement forKey:@"lastViewedArticle"];
+    [defaults synchronize];
     
     [self.delegate bookmark:self sendsURL:[NSURL URLWithString:[currentArrayElement objectForKey:@"link"]]];
     

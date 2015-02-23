@@ -147,19 +147,17 @@
     cell.date.text = [dateFormatter stringFromDate:[NSDate date]];
     cell.preview.text = [currentArrayElement objectForKey:@"contentSnippet"];
     
-     NSLog(@"!!NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
-    
     //if night mode is turned on, then adjust the colors
     if (nightReadingModeOn == YES) {
-        NSLog(@"night mode ON");
+        //NSLog(@"night mode ON");
         cell.backgroundColor = [UIColor blackColor];
         cell.title.textColor = [UIColor whiteColor];
         cell.date.textColor = [UIColor whiteColor];
         cell.preview.textColor = [UIColor whiteColor];
     }
-    else {
-        NSLog(@"night mode NOT ON");
-    }
+    //else {
+    //    //NSLog(@"night mode NOT ON");
+    //}
     
     return cell;
 }
