@@ -69,6 +69,13 @@
     self.tableView.estimatedRowHeight = 89.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIContentSizeCategoryDidChangeNotification
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      NSLog(@"Cell size changed; need to reload table");
+                                                      [self.tableView reloadData];
+                                                  }];
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     

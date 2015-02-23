@@ -33,6 +33,14 @@
     //http://www.appcoda.com/self-sizing-cells/
     self.tableView.estimatedRowHeight = 89.0; //set estimated row height of cell = height of existing prototype cell
     self.tableView.rowHeight = UITableViewAutomaticDimension; //self-sizing cells
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIContentSizeCategoryDidChangeNotification
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      NSLog(@"Cell size changed; need to reload table");
+                                                      [self.tableView reloadData];
+                                                  }];
 
     [self loadInitialData];
     [self.tableView reloadData];
