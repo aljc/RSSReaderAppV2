@@ -89,6 +89,10 @@
     cell.bookmarkDate.text = [dateFormatter stringFromDate:[NSDate date]];
     cell.bookmarkPreview.text = [currentArrayElement objectForKey:@"contentSnippet"];
     
+    cell.bookmarkTitle.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    cell.bookmarkDate.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    cell.bookmarkPreview.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+    
     [cell layoutIfNeeded];
     
     return cell;

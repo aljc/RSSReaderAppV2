@@ -63,6 +63,15 @@
     [self loadInitialData];
 }
 
+//Need this for dynamic type resizing!
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.tableView reloadData]; //force a reload after the view appears
+    //to ensure that all cells are displayed with correct row height upon
+    //first load
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -148,6 +157,10 @@
     cell.title.text = [currentArrayElement objectForKey:@"title"];
     cell.date.text = [dateFormatter stringFromDate:[NSDate date]];
     cell.preview.text = [currentArrayElement objectForKey:@"contentSnippet"];
+    
+    cell.title.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    cell.date.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    cell.preview.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     
     //if night mode is turned on, then adjust the colors
     if (nightReadingModeOn == YES) {
