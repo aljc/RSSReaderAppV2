@@ -298,6 +298,9 @@
 //            //be listening for a "finished loading" notification, and trigger the dismissSplash function when that happens
 //            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissSplash:) name:@"mobi.uchicago.finishedLoading" object:nil];
 //        }
+    
+    //Note: for some reason, the data often finishes downloading before the splash screen is even loaded.
+    //I am just going to display a launch screen to get the same effect.
 
 }
 
